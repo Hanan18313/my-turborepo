@@ -1,11 +1,15 @@
 {
   "$schema": "https://turborepo.com/schema.json",
   "ui": "tui",
+  "globalEnv": ["IMPORTANT_GLOBAL_VARIABLE", "NODE_ENV"],
+  "globalDependencies": [".env"],
   "tasks": {
     "build": {
+      "env": ["MY_API_URL", "MY_API_KEY"],
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
-      "outputs": [".next/**", "!.next/cache/**", "dist/**"]
+      "outputs": [".next/**", "!.next/cache/**", "dist/**"],
+      "cache": true
     },
     "lint": {
       "dependsOn": ["^lint"]
